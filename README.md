@@ -1,0 +1,2 @@
+# BBBOXSelector
+【ハイポリ対応済み】Maya用スクリプトTool。バウンディングボックスで頂点や平面の選択を指定するTool
