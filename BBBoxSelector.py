@@ -365,14 +365,15 @@ class BBBoxSelector():
 class BBBoxSelectorGUI():
 
     def __init__(self):
+        self.windowName = "BBBoxSelectorMainUI"
         pass
     
     def show_bbox_selector_tool(self, *args, **kwargs):
         tool = BBBoxSelector()
         tool.show()
 
-    def ui(self):
-        col = cmds.columnLayout(adj=True)
+    def ui(self, parent):
+        col = cmds.columnLayout(adj=True, parent=parent)
         cmds.button(
             l="Show BBox Selector Tool",
             c=self.show_bbox_selector_tool
@@ -382,6 +383,11 @@ class BBBoxSelectorGUI():
         return col
 
     def show(self):
-        self.ui()
+        if cmds.window(self.windowName, exists=True):
+            cmds.deleteUI(self.windowName)
+        cmds.window(self.windowName)
+        self.ui(self.windowName)
+
+        cmds.showWindow(self.windowName)
 # 実行
 # show_bbox_selector_tool()
